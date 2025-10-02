@@ -7,6 +7,19 @@
 void decode_steganography(int image_data[], int data_size, std::string key) {
 
     int currentIndex = 1000;
+    int keyIndex = 0;
+
+    while (currentIndex < data_size) {
+        int secret_value = image_data[currentIndex];
+        if (secret_value == 0) {
+            break;
+        }
+        std::cout << (char)secret_value;
+
+        int jump = (int)key[keyIndex % key.size()];
+        currentIndex += jump;
+        keyIndex++;
+    }
 
     // TODO: Implement the solve_steganography function.
     /**
